@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Examples</title>
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+    <div class="container">
+        <h1>Arithmetic, Comparison, and Logical Operators</h1>
+        
+        <label for="num1">Enter First Number:</label>
+        <input type="number" id="num1" placeholder="Enter a number" required>
+
+        <label for="num2">Enter Second Number:</label>
+        <input type="number" id="num2" placeholder="Enter another number" required>
+
+        <button onclick="performOperations()">Calculate</button>
+
+        <div id="output" class="output"></div>
+    </div>
+
+    <script>
+        function performOperations() {
+            // Get input values
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+
+            // Check if inputs are valid numbers
+            if (isNaN(num1) || isNaN(num2)) {
+                document.getElementById('output').innerHTML = 'Please enter valid numbers!';
+                return;
+            }
+
+            // Arithmetic Operators
+            const addition = num1 + num2;
+            const subtraction = num1 - num2;
+            const multiplication = num1 * num2;
+            const division = num1 / num2;
+
+            // Comparison Operators
+            const isEqual = num1 === num2;
+            const isGreater = num1 > num2;
+            const isLess = num1 < num2;
+
+            // Logical Operators
+            const isBothPositive = num1 > 0 && num2 > 0;
+            const isEitherPositive = num1 > 0 || num2 > 0;
+
+            // Prepare the output
+            let result = `
+                <h3>Results:</h3>
+                <p><strong>Arithmetic:</strong><br>
+                    Addition: ${addition}<br>
+                    Subtraction: ${subtraction}<br>
+                    Multiplication: ${multiplication}<br>
+                    Division: ${division}<br>
+                </p>
+
+                <p><strong>Comparison:</strong><br>
+                    Are the numbers equal? ${isEqual ? 'Yes' : 'No'}<br>
+                    Is the first number greater than the second? ${isGreater ? 'Yes' : 'No'}<br>
+                    Is the first number less than the second? ${isLess ? 'Yes' : 'No'}<br>
+                </p>
+
+                <p><strong>Logical:</strong><br>
+                    Are both numbers positive? ${isBothPositive ? 'Yes' : 'No'}<br>
+                    Is at least one number positive? ${isEitherPositive ? 'Yes' : 'No'}<br>
+                </p>
+            `;
+
+            // Display the results
+            document.getElementById('output').innerHTML = result;
+        }
+    </script>
+</body>
+</html>
